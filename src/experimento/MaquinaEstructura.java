@@ -177,20 +177,40 @@ public class MaquinaEstructura {
 	public class ListaEncadenada implements Operaciones
 	{
 
+		private NodoLista inicio;
+		
 		@Override
 		public Nodo buscar(int idNodo) {
 			
-			N
+			NodoLista actual = inicio; 
 			
-			while
+			
+			while (actual != null)
+			{
+				if (actual.getId() == idNodo)
+					return actual;
+				actual = actual.siguiente;
+			}
 			
 			return null;
 		}
 
 		@Override
 		public boolean agregar(Nodo nuevoNodo) {
-			// TODO Auto-generated method stub
-			return false;
+
+			NodoLista actual = inicio;
+			
+			while (actual.siguiente != null)
+			{
+				if (actual.getId() == nuevoNodo.getId())
+					return false;
+				actual = actual.siguiente;
+			}
+
+			//actual.siguiente es null, lo cambio por el unevo
+			actual.siguiente = (NodoLista) nuevoNodo;
+			
+			return true;
 		}
 
 		
